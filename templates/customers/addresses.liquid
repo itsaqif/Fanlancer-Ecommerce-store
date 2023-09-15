@@ -1,0 +1,220 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% paginate customer.addresses by 5 %}
+<section class="section section--account account account--address">
+    <div class="container container--tiny">
+        <div class="section__title section__title--center section__title--desc">
+            <h1 class="section__title-text h2">{% comment %}ly_i18n_replace_for_[ 'customer.account.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.account.title' | t }}{% endcapture %}{% include 'ly-static-string' with '13355527' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h1>
+            <p class="section__title-desc"><a href="/account" class="link link--arrow-left">{% comment %}ly_i18n_replace_for_[ 'customer.account.return' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.account.return' | t }}{% endcapture %}{% include 'ly-static-string' with '13355528' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></p>
+        </div>
+    </div>
+
+    <div class="container container--small">
+        
+        <div class="u-text-center">
+            <a href="#" class="c-btn c-btn--grey" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.add_new' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.add_new' | t }}{% endcapture %}{% include 'ly-static-string' with '13355529' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+        </div>
+
+        {% comment %}
+            Add address form, hidden by default
+        {% endcomment %}
+        {% form 'customer_address', customer.new_address %}
+            <div id="AddAddress" class="account__form account__form--address" {% unless form.errors %}style="display:none;"{% endunless %}>
+                <h2 class="h3">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.add_new' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.add_new' | t }}{% endcapture %}{% include 'ly-static-string' with '13355529' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
+                
+                {{ form.errors | default_errors }}
+
+                <div class="o-layout">
+                    <div class="o-layout__item u-1/1 u-1/2@tab">
+                        <label for="AddressFirstNameNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.first_name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.first_name' | t }}{% endcapture %}{% include 'ly-static-string' with '13355530' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <input type="text" id="AddressFirstNameNew" class="input-full" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
+                    </div>
+
+                    <div class="o-layout__item u-1/1 u-1/2@tab">
+                        <label for="AddressLastNameNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.last_name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.last_name' | t }}{% endcapture %}{% include 'ly-static-string' with '13355531' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <input type="text" id="AddressLastNameNew" class="input-full" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
+                    </div>
+                </div>
+
+                <label for="AddressCompanyNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.company' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.company' | t }}{% endcapture %}{% include 'ly-static-string' with '13355532' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                <input type="text" id="AddressCompanyNew" class="input-full" name="address[company]" value="{{ form.company }}" autocapitalize="words">
+
+                <label for="AddressAddress1New">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.address1' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.address1' | t }}{% endcapture %}{% include 'ly-static-string' with '13355533' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                <input type="text" id="AddressAddress1New" class="input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
+
+                <label for="AddressAddress2New">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.address2' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.address2' | t }}{% endcapture %}{% include 'ly-static-string' with '13355534' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                <input type="text" id="AddressAddress2New" class="input-full" name="address[address2]" value="{{ form.address2 }}" autocapitalize="words">
+
+                <div class="o-layout">
+                    <div class="o-layout__item u-1/1 u-1/2@tab">
+                        <label for="AddressCityNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.city' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.city' | t }}{% endcapture %}{% include 'ly-static-string' with '13355535' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <input type="text" id="AddressCityNew" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+                    </div>
+
+                    <div class="o-layout__item u-1/1 u-1/2@tab">
+                        <label for="AddressCountryNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.country' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.country' | t }}{% endcapture %}{% include 'ly-static-string' with '13355536' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <div class="selector-wrapper">
+                            <select id="AddressCountryNew" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                        </div>
+                    </div>
+
+                    <div class="o-layout__item" id="AddressProvinceContainerNew" style="display:none">
+                        <label for="AddressProvinceNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.province' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.province' | t }}{% endcapture %}{% include 'ly-static-string' with '13355537' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <select id="AddressProvinceNew" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
+                    </div>
+
+                    <div class="o-layout__item u-1/1 u-1/2@tab">
+                        <label for="AddressZipNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.zip' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.zip' | t }}{% endcapture %}{% include 'ly-static-string' with '13355538' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <input type="text" id="AddressZipNew" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                    </div>
+
+                    <div class="o-layout__item u-1/1 u-1/2@tab">
+                        <label for="AddressPhoneNew">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.phone' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.phone' | t }}{% endcapture %}{% include 'ly-static-string' with '13355539' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <input type="tel" id="AddressPhoneNew" class="input-full" name="address[phone]" value="{{ form.phone }}">
+                    </div>
+                </div>
+
+                <p>
+                    {{ form.set_as_default_checkbox }}
+                    <label for="address_default_address_new" class="inline">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.set_default' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.set_default' | t }}{% endcapture %}{% include 'ly-static-string' with '13355540' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                </p>
+
+                <div class="account__form-buttons">                    
+                    <input type="submit" class="c-btn c-btn--primary account__form-submit" value="{% comment %}ly_i18n_replace_for_[ 'customer.addresses.add' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.add' | t }}{% endcapture %}{% include 'ly-static-string' with '13355541' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}">
+                    <a href="#" class="link account__form-secondary-btn" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.cancel' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.cancel' | t }}{% endcapture %}{% include 'ly-static-string' with '13355542' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+                </div>
+            </div>
+        {% endform %}
+
+
+        {% comment %}
+            List all customer addresses with a unique edit form.
+            Also add pagination in case they have a large number of addresses
+        {% endcomment %}
+        {% for address in customer.addresses %}
+            <div class="account__address u-text-center{% if forloop.first == true %} account__address--first{% endif %}">
+                {% if address == customer.default_address %}
+                    <h4>{% comment %}ly_i18n_replace_for_[ 'customer.addresses.default' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.default' | t }}{% endcapture %}{% include 'ly-static-string' with '13355543' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h4>
+                {% endif %}
+
+                {{ address | format_address }}
+
+                <div class="account__address-actions">
+                    {% comment %}ly_i18n_replace_for_[ 'customer.addresses.edit' | t | edit_customer_address_link: address.id ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.edit' | t | edit_customer_address_link: address.id }}{% endcapture %}{% include 'ly-static-string' with '13355544' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | edit_customer_address_link: address.id }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                    {% comment %}ly_i18n_replace_for_[ 'customer.addresses.delete' | t | delete_customer_address_link: address.id ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.delete' | t | delete_customer_address_link: address.id }}{% endcapture %}{% include 'ly-static-string' with '13355545' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | delete_customer_address_link: address.id }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
+                </div>
+            </div>
+
+            {% form 'customer_address', address %}
+                <div id="EditAddress_{{ address.id }}" class="account__form" {% unless form.errors %}style="display:none;"{% endunless %}>
+                    <h3>{% comment %}ly_i18n_replace_for_[ 'customer.addresses.edit_address' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.edit_address' | t }}{% endcapture %}{% include 'ly-static-string' with '13355546' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+                    
+                    {{ form.errors | default_errors }}
+
+                    <div class="o-layout">
+                        <div class="o-layout__item u-1/1 u-1/2@tab">
+                            <label for="AddressFirstName_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.first_name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.first_name' | t }}{% endcapture %}{% include 'ly-static-string' with '13355530' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                            <input type="text" id="AddressFirstName_{{ form.id }}" class="input-full" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
+                        </div>
+
+                        <div class="o-layout__item u-1/1 u-1/2@tab">
+                            <label for="AddressLastName_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.last_name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.last_name' | t }}{% endcapture %}{% include 'ly-static-string' with '13355531' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                            <input type="text" id="AddressLastName_{{ form.id }}" class="input-full" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
+                        </div>
+                    </div>
+
+                    <label for="AddressCompany_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.company' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.company' | t }}{% endcapture %}{% include 'ly-static-string' with '13355532' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                    <input type="text" id="AddressCompany_{{ form.id }}" class="input-full" name="address[company]" value="{{ form.company }}" autocapitalize="words">
+
+                    <label for="AddressAddress1_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.address1' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.address1' | t }}{% endcapture %}{% include 'ly-static-string' with '13355533' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                    <input type="text" id="AddressAddress1_{{ form.id }}" class="input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
+
+                    <label for="AddressAddress2_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.address2' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.address2' | t }}{% endcapture %}{% include 'ly-static-string' with '13355534' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                    <input type="text" id="AddressAddress2_{{ form.id }}" class="input-full" name="address[address2]" value="{{ form.address2 }}" autocapitalize="words">
+
+                    <label for="AddressCity_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.city' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.city' | t }}{% endcapture %}{% include 'ly-static-string' with '13355535' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                    <input type="text" id="AddressCity_{{ form.id }}" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+
+                    <label for="AddressCountry_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.country' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.country' | t }}{% endcapture %}{% include 'ly-static-string' with '13355536' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                    <select id="AddressCountry_{{ form.id }}" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+
+                    <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
+                        <label for="AddressProvince_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.province' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.province' | t }}{% endcapture %}{% include 'ly-static-string' with '13355537' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                        <select id="AddressProvince_{{ form.id }}" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
+                    </div>
+
+                    <div class="o-layout">
+                        <div class="o-layout__item u-1/1 u-1/2@tab">
+                            <label for="AddressZip_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.zip' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.zip' | t }}{% endcapture %}{% include 'ly-static-string' with '13355538' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                            <input type="text" id="AddressZip_{{ form.id }}" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                        </div>
+
+                        <div class="o-layout__item u-1/1 u-1/2@tab">
+                            <label for="AddressPhone_{{ form.id }}">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.phone' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.phone' | t }}{% endcapture %}{% include 'ly-static-string' with '13355539' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                            <input type="tel" id="AddressPhone_{{ form.id }}" class="input-full" name="address[phone]" value="{{ form.phone }}">
+                        </div>
+                    </div>
+
+                    <p>
+                        {{ form.set_as_default_checkbox }}
+                        <label for="address_default_address_{{ form.id }}" class="inline">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.set_default' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.set_default' | t }}{% endcapture %}{% include 'ly-static-string' with '13355540' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
+                    </p>
+
+                    <div class="account__form-buttons">                    
+                        <input type="submit" class="c-btn c-btn--primary account__form-submit" value="{% comment %}ly_i18n_replace_for_[ 'customer.addresses.update' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.update' | t }}{% endcapture %}{% include 'ly-static-string' with '13355547' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}">
+                        <a href="#" class="link account__form-secondary-btn" onclick="Shopify.CustomerAddress.toggleForm({{ form.id }}); return false;">{% comment %}ly_i18n_replace_for_[ 'customer.addresses.cancel' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customer.addresses.cancel' | t }}{% endcapture %}{% include 'ly-static-string' with '13355542' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
+                    </div>
+                </div>
+            {% endform %}
+        {% endfor %}
+
+        {% if paginate.pages > 1 %}
+            <div class="account__pagination">
+                <div class="container">
+                    <div class="pagination">
+                        <div class="pagination__items">
+                            {{ paginate | default_pagination: next: '<i class="icon icon--right-t"></i><ly-as-13355526>', previous: '</ly-as-13355526><i class="icon icon--left-t"></i>' }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<script>
+    // Initialize observers on address selectors
+    new Shopify.CountryProvinceSelector('AddressCountryNew', 'AddressProvinceNew', {
+        hideElement: 'AddressProvinceContainerNew'
+    });
+
+    // Setup province selector on each customer address
+    {% paginate customer.addresses by 5 %}
+        {% for address in customer.addresses %}
+            new Shopify.CountryProvinceSelector('AddressCountry_{{ address.id }}', 'AddressProvince_{{ address.id }}', {
+                hideElement: 'AddressProvinceContainer_{{ address.id }}'}
+            );
+        {% endfor %}
+    {% endpaginate %}
+
+    // Modified contents of customer_area.js (global asset)
+    Shopify.CustomerAddress = {
+        toggleForm: function(id) {
+            var editEl = document.getElementById('EditAddress_'+id);
+            editEl.style.display = editEl.style.display == 'none' ? '' : 'none';
+            return false;
+        },
+
+        toggleNewForm: function() {
+            var el = document.getElementById('AddAddress');
+            el.style.display = el.style.display == 'none' ? '' : 'none';
+            return false;
+        },
+
+        destroy: function(id, confirm_msg) {
+            if (confirm(confirm_msg || "Are you sure you wish to delete this address?")) {
+                Shopify.postLink('/account/addresses/'+id, {'parameters': {'_method': 'delete'}});
+            }
+        }
+    }
+</script>
+{% endpaginate %}
